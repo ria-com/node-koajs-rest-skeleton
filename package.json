@@ -18,7 +18,8 @@
     "koa-bodyparser": "*"
   },
   "devDependencies": {
-    "jasmine-node": "*"
+    "jasmine-node": "*",
+    "co": "*"
   },
   "scripts": {
     "start": "node --harmony index.js",

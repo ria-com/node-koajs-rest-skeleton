@@ -8,7 +8,7 @@
     ];
 
     module.exports = {
-        getAll: function getAllFromDb() { return db },
+        getAll: function * getAllFromDb() { return db },
         getById: function * getIdFromDb(id) {
             return db[parseInt(id)];
         },
