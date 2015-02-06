@@ -11,19 +11,15 @@ var argv = require('optimist')
             description : 'example --opt.app=mobile --opt.s=1'
         })
         .argv,
-    co = require('co'),
-    allowSections = {
-        'default': true
-    };
+    co = require('co');
 
 var onerror = function onerror(err) { console.error(err.stack); };
 
 co(function *(){
-    if (argv.section in allowSections) {
+    try {
         yield (require('./controllers/'+argv.section+'Controller')[argv.action](argv.opt));
-    } else {
-        throw new Error("Error: section '"+argv.section+"' is incorrect!");
-
+    } catch (err) {
+        throw new Error(err);
     }
 }).catch(onerror);
 
