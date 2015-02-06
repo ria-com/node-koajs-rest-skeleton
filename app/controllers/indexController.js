@@ -17,6 +17,7 @@
 
         createItem: function * createItem (next) {
             this.body = yield myDb.setNewId(this.request.body.name);
+            this.status = 201;
             yield next;
         },
 

@@ -1,6 +1,6 @@
 {
   "name": "myKoajsRestApp",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A simple Koajs REST Application Skeleton",
   "author": {
     "name": "Oleg Cherniy",
@@ -19,7 +19,8 @@
   },
   "devDependencies": {
     "jasmine-node": "*",
-    "co": "*"
+    "co": "*",
+    "optimist": "*"
   },
   "scripts": {
     "start": "node --harmony index.js",

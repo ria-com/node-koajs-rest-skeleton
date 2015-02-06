@@ -32,6 +32,25 @@ $ vi package.json
 $ vi config/default.js
 ```
 
+console api
+===========
+
+```sh
+Usage: /usr/bin/node ./console.js --section [string] [--action [string]] [--opt [object]]
+
+Options:
+  --opt, --options  example --opt.app=mobile --opt.s=1  [default: {}]
+  --section                                             [required]
+  --action                                              [default: "index"]
+```
+
+For example 
+```sh
+$ ./console.js --section=default --opt.hello=world
+Hello world defaultController & index action with options: {"hello":"world"}
+```
+
+
 simple test
 ===========
 
