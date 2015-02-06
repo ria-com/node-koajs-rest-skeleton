@@ -3,7 +3,7 @@
 (function () {
 
     /**
-     * @module controllers/langController
+     * @module controllers/defaultController
      */
     module.exports = {
         index : function* (options) {
