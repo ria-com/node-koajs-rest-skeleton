@@ -16,11 +16,7 @@ var argv = require('optimist')
 var onerror = function onerror(err) { console.error(err.stack); };
 
 co(function *(){
-    try {
-        yield (require('./controllers/'+argv.section+'Controller')[argv.action](argv.opt));
-    } catch (err) {
-        throw new Error(err);
-    }
+    yield require('./controllers/'+argv.section+'Controller')[argv.action](argv.opt);
 }).catch(onerror);
 
 
