@@ -17,7 +17,5 @@ var onerror = function onerror(err) { console.error(err.stack); };
 
 co(function *(){
     yield require('./controllers/'+argv.section+'Controller')[argv.action](argv.opt);
+    process.exit(0);
 }).catch(onerror);
-
-
-
