@@ -11,6 +11,7 @@ module.exports = function routes(app) {
         .put('/users/:id', require('../controllers/indexController').updateItem)
         .delete('/users/:id', require('../controllers/indexController').removeItem);
 
-    app.use(router.middleware());
+    app.use(router.routes());
+    app.use(router.allowedMethods());
 
 };

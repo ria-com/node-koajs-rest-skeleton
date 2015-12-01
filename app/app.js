@@ -1,7 +1,7 @@
-var koa = require('koa'),
-    config = require('config');
+const Koa = require('koa'),
+      config = require('config');
 
-var app = koa();
+const app = new Koa();
 
 //Comment this line to disable koa-body-parser
 require('./helpers/bodyparser')(app);

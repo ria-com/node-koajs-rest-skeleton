@@ -5,31 +5,33 @@
 
     module.exports = {
 
-        getId: function * getId (next) {
-            this.body = yield myDb.getById(this.params.id);
-            yield next;
+        getId:function getId (ctx, next) {
+            ctx.body = myDb.getById(ctx.params.id) || {};
+            next();
         },
 
-        list: function * list (next) {
-            this.body = yield myDb.getAll();
-            yield next;
+        list: function list (ctx, next) {
+            ctx.body = myDb.getAll();
+            next();
         },
 
-        createItem: function * createItem (next) {
-            this.body = yield myDb.setNewId(this.request.body.name);
-            this.status = 201;
-            yield next;
+        createItem: function createItem (ctx, next) {
+            console.log(ctx.request.body);
+            ctx.body = myDb.setNewId(ctx.request.body.name);
+            ctx.status = 201;
+            next();
         },
 
-        updateItem: function * updateItem (next) {
-            this.body = yield myDb.updateId(this.params.id, this.request.body.name);
-            yield next;
+        updateItem: function updateItem (ctx, next) {
+            console.log(ctx.request.body);
+            ctx.body = myDb.updateId(ctx.params.id, ctx.request.body.name);
+            next();
         },
 
-        removeItem: function * removeItem (next) {
-            yield myDb.removeId(this.params.id);
+        removeItem: function removeItem (ctx, next) {
+            myDb.removeId(this.params.id);
             this.status = 204;
-            yield next;
+            next();
         }
     }
 }());
