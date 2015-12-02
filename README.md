@@ -1,7 +1,7 @@
 node-koajs-rest-skeleton
 ===================
 
-A simple [Koajs Application REST Skeleton](https://github.com/ria-com/node-koajs-rest-skeleton)
+A simple [Koajs 2.0 Application REST Skeleton](https://github.com/ria-com/node-koajs-rest-skeleton)
 
 quick start
 ===========

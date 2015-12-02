@@ -1,8 +1,8 @@
 module.exports = function routes(app) {
     "use strict";
 
-    var Router = require('koa-router');
-    var router = new Router();
+    var Router = require('koa-router'),
+        router = new Router();
 
     router
         .get('/users', require('../controllers/indexController').list)

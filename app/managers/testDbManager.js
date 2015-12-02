@@ -2,27 +2,77 @@
     "use strict";
 
     var db = [
-        {id:0, name: "test0" },
-        {id:1, name: "test1" },
-        {id:2, name: "test2" }
-    ];
+          {id:0, name: "test0" },
+          {id:1, name: "test1" },
+          {id:2, name: "test2" }
+        ],
+        fakeDelay=100;
 
     module.exports = {
-        getAll: function getAllFromDb() { return db },
-        getById: function getIdFromDb(id) {
-            return db[parseInt(id)];
+
+        /**
+         * Get all records from memory DB
+         * @return {Promise}
+         */
+        getAll: function getAllFromDb() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(db || []);
+                }, fakeDelay);
+            });
         },
+
+        /**
+         * Get record by id from memory DB
+         * @param id
+         * @return {Promise}
+         */
+        getById: function getIdFromDb(id) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(db[parseInt(id)] || {});
+                }, fakeDelay);
+            });
+        },
+
+        /**
+         * Add new record to memory DB
+         * @param name
+         * @return {Promise}
+         */
         setNewId: function setNewIdToDb(name) {
             var length = db.length;
             db.push({id: length, name: name});
-            return db[parseInt(length)];
+            return module.exports.getById(length);
         },
+
+        /**
+         * Update record into memory DB
+         * @param id
+         * @param name
+         * @return {Promise}
+         */
         updateId: function updateIdToDb(id,name) {
             db[parseInt(id)] = {id: parseInt(id), name: name};
-            return db[parseInt(id)];
+            return module.exports.getById(id);
         },
+
+        /**
+         * Remove record from memory DB
+         * @param id
+         * @return {Promise}
+         */
         removeId: function removeIdInDb(id) {
-            delete db[parseInt(id)];
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (parseInt(id) === (db.length-1)) {
+                        db.pop();
+                    } else {
+                        delete db[parseInt(id)];
+                    }
+                    resolve();
+                }, fakeDelay);
+            });
         }
     }
 }());

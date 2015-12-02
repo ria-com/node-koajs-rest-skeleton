@@ -1,37 +1,35 @@
 (function () {
     "use strict";
 
-    var myDb = require('../managers/testDbManager');
+    var myDb = require('../managers/testDbManager'),
+        co = require('co')
 
     module.exports = {
+        getId: co.wrap(function* getId (ctx, next) {
+            ctx.body = yield myDb.getById(ctx.params.id);
+            yield next();
+        }),
 
-        getId:function getId (ctx, next) {
-            ctx.body = myDb.getById(ctx.params.id) || {};
-            next();
-        },
+        list: co.wrap(function* list (ctx, next) {
+            ctx.body = yield myDb.getAll();
+            yield next();
+        }),
 
-        list: function list (ctx, next) {
-            ctx.body = myDb.getAll();
-            next();
-        },
-
-        createItem: function createItem (ctx, next) {
-            console.log(ctx.request.body);
-            ctx.body = myDb.setNewId(ctx.request.body.name);
+        createItem: co.wrap(function* createItem (ctx, next) {
+            ctx.body = yield myDb.setNewId(ctx.request.body.name);
             ctx.status = 201;
-            next();
-        },
+            yield next();
+        }),
 
-        updateItem: function updateItem (ctx, next) {
-            console.log(ctx.request.body);
-            ctx.body = myDb.updateId(ctx.params.id, ctx.request.body.name);
-            next();
-        },
+        updateItem: co.wrap(function* updateItem (ctx, next) {
+            ctx.body = yield myDb.updateId(ctx.params.id, ctx.request.body.name);
+            yield next();
+        }),
 
-        removeItem: function removeItem (ctx, next) {
-            myDb.removeId(this.params.id);
-            this.status = 204;
-            next();
-        }
+        removeItem: co.wrap(function* removeItem (ctx, next) {
+            yield myDb.removeId(ctx.params.id);
+            ctx.status = 204;
+            yield next();
+        })
     }
 }());
