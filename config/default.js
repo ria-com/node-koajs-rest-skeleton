@@ -10,6 +10,7 @@ module.exports = {
     rabbitMq: {
         host: "127.0.0.1",
         port: 5672,
+        options: {durable: true},
         queue: process.env.NODE_QUEUE_NAME,
         user: "myuser",
         password: "mypass"

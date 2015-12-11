@@ -14,7 +14,7 @@
                     });
                     return connection.createChannel()
                         .then(function (channel) {
-                            var ok = channel.assertQueue(config.rabbitMq.queue, {durable: true});
+                            var ok = channel.assertQueue(config.rabbitMq.queue,config.rabbitMq.options || {durable: true});
                             ok = ok.then(function () {
                                 channel.prefetch(1);
                             });
