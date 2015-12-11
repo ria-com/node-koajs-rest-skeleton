@@ -50,6 +50,18 @@ $ ./console.js --section=default --opt.hello=world
 Hello world defaultController & index action with options: {"hello":"world"}
 ```
 
+rabbitmq api
+============
+
+```sh
+Usage: NODE_WORKER_NAME=[worker_name] NODE_QUEUE_NAME=[queue_name] /usr/bin/node --harmony ./worker.js
+```
+
+For example 
+```sh
+$ NODE_WORKER_NAME=example NODE_QUEUE_NAME=example /usr/bin/node --harmony ./worker.js
+```
+
 
 simple test
 ===========

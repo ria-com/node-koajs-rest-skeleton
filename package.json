@@ -11,7 +11,9 @@
     "test": "./test"
   },
   "dependencies": {
+    "amqplib": "*",
     "config": "*",
+    "co": "*",
     "koa": "git://github.com/koajs/koa.git#v2.x",
     "koa-router": ">=7.x.x",
     "koa-convert": "*",
@@ -20,7 +22,6 @@
   },
   "devDependencies": {
     "jasmine-node": "*",
-    "co": "*",
     "optimist": "*"
   },
   "scripts": {
