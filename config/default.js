@@ -6,6 +6,7 @@ module.exports = {
     server: {
         port: 8081
     },
+    worker: process.env.NODE_WORKER_NAME,
     rabbitMq: {
         host: "127.0.0.1",
         port: 5672,
