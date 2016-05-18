@@ -1,5 +1,5 @@
-var myDb = require('../app/managers/testDbManager'),
-    item = {id:2, name: "test2" };
+const myDb = require('../app/managers/testDbManager'),
+      item = {id:2, name: "test2" };
 
 describe('myDB Tests', function () {
 

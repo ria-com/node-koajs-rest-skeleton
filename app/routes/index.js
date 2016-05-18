@@ -1,15 +1,16 @@
 module.exports = function routes(app) {
     "use strict";
 
-    var Router = require('koa-router'),
-        router = new Router();
+    const Router = require('koa-router'),
+        router = new Router(),
+        indexController = require('../controllers/indexController');
 
     router
-        .get('/users', require('../controllers/indexController').list)
-        .get('/users/:id', require('../controllers/indexController').getId)
-        .post('/users/', require('../controllers/indexController').createItem)
-        .put('/users/:id', require('../controllers/indexController').updateItem)
-        .delete('/users/:id', require('../controllers/indexController').removeItem);
+        .get('/users',        indexController.list)
+        .get('/users/:id',    indexController.getId)
+        .post('/users/',      indexController.createItem)
+        .put('/users/:id',    indexController.updateItem)
+        .delete('/users/:id', indexController.removeItem);
 
     app.use(router.routes());
     app.use(router.allowedMethods());
