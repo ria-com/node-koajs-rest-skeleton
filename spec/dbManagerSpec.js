@@ -1,3 +1,5 @@
+"use strict";
+
 const myDb = require('../app/managers/testDbManager'),
       item = {id:2, name: "test2" };
 

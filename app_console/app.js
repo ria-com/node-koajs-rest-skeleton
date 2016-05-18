@@ -1,5 +1,6 @@
 "use strict";
-var argv = require('optimist')
+
+const argv = require('optimist')
         .usage('Usage: $0 --section [string] [--action [string]] [--opt [object]]')
         .demand(['section'])
         .options('action', {
@@ -11,9 +12,9 @@ var argv = require('optimist')
             description : 'example --opt.app=mobile --opt.s=1'
         })
         .argv,
-    co = require('co');
+      co = require('co');
 
-var onerror = function onerror(err) { console.error(err.stack); };
+const onerror = function onerror(err) { console.error(err.stack); };
 
 co(function *(){
     yield require('./controllers/'+argv.section+'Controller')[argv.action](argv.opt);
