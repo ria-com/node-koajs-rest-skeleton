@@ -14,7 +14,7 @@
     "amqplib": "*",
     "config": "*",
     "co": "*",
-    "koa": "git://github.com/koajs/koa.git#v2.x",
+    "koa": ">=2.x",
     "koa-router": ">=7.x.x",
     "koa-convert": "*",
     "koa-render": "*",
