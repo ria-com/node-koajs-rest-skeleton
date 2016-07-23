@@ -1,7 +1,11 @@
 node-koajs-rest-skeleton
 ===================
 
-A simple [Koajs Application REST Skeleton](https://github.com/ria-com/node-koajs-rest-skeleton)
+A simple [Koajs 2.0 Application REST Skeleton](https://github.com/ria-com/node-koajs-rest-skeleton)
+This version based on [koa 2.0](https://github.com/koajs/koa/tree/v2.x). 
+
+You can also require assembly for [koa v1.x](https://github.com/ria-com/node-koajs-rest-skeleton/tree/v1.x)
+    
 
 quick start
 ===========
@@ -48,6 +52,18 @@ For example
 ```sh
 $ ./console.js --section=default --opt.hello=world
 Hello world defaultController & index action with options: {"hello":"world"}
+```
+
+rabbitmq api
+============
+
+```sh
+Usage: NODE_WORKER_NAME=[worker_name] NODE_QUEUE_NAME=[queue_name] /usr/bin/node --harmony ./worker.js
+```
+
+For example 
+```sh
+$ NODE_WORKER_NAME=example NODE_QUEUE_NAME=example /usr/bin/node --harmony ./worker.js
 ```
 
 

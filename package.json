@@ -1,7 +1,7 @@
 {
   "name": "myKoajsRestApp",
-  "version": "0.2.1",
-  "description": "A simple Koajs REST Application Skeleton",
+  "version": "2.0.0-alpha.1",
+  "description": "A simple Koajs 2.0 REST Application Skeleton",
   "author": {
     "name": "Oleg Cherniy",
     "email": "oleg.cherniy@gmail.com"
@@ -11,15 +11,17 @@
     "test": "./test"
   },
   "dependencies": {
+    "amqplib": "*",
     "config": "*",
-    "koa": "*",
-    "koa-router": "*",
+    "co": "*",
+    "koa": "git://github.com/koajs/koa.git#v2.x",
+    "koa-router": ">=7.x.x",
+    "koa-convert": "*",
     "koa-render": "*",
     "koa-bodyparser": "*"
   },
   "devDependencies": {
     "jasmine-node": "*",
-    "co": "*",
     "optimist": "*"
   },
   "scripts": {
@@ -27,6 +29,6 @@
     "test": "node --harmony ./node_modules/jasmine-node/lib/jasmine-node/cli.js spec"
   },
   "engines": {
-    "node": ">=0.11.x"
+    "node": ">=4.0.x"
   }
 }
