@@ -2,6 +2,7 @@ node-koajs-rest-skeleton
 ===================
 
 A simple [Koajs Application REST Skeleton](https://github.com/ria-com/node-koajs-rest-skeleton)
+This version for koa 1.x
 
 quick start
 ===========
