@@ -1,10 +1,9 @@
-"use strict";
-
 /**
  * @module controllers/defaultController
  */
-module.exports = {
-    index : function* (options) {
+async function index (options) {
         console.log('Hello world defaultController & index action with options: ' +JSON.stringify(options));
-    }
 };
+
+export {index};
+

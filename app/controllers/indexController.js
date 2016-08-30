@@ -1,33 +1,30 @@
-"use strict";
+import myDb from '../managers/testDbManager';
 
-const myDb = require('../managers/testDbManager'),
-      co = require('co');
+async function getId (ctx, next) {
+    ctx.body = await myDb.getById(ctx.params.id);
+    await next();
+}
 
-module.exports = {
-    getId: co.wrap(function* getId (ctx, next) {
-        ctx.body = yield myDb.getById(ctx.params.id);
-        yield next();
-    }),
+async function list (ctx, next) {
+    ctx.body = await myDb.getAll();
+    await next();
+}
 
-    list: co.wrap(function* list (ctx, next) {
-        ctx.body = yield myDb.getAll();
-        yield next();
-    }),
+async function createItem (ctx, next) {
+    ctx.body = await myDb.setNewId(ctx.request.body.name);
+    ctx.status = 201;
+    await next();
+}
 
-    createItem: co.wrap(function* createItem (ctx, next) {
-        ctx.body = yield myDb.setNewId(ctx.request.body.name);
-        ctx.status = 201;
-        yield next();
-    }),
+async function updateItem (ctx, next) {
+    ctx.body = await myDb.updateId(ctx.params.id, ctx.request.body.name);
+    await next();
+}
 
-    updateItem: co.wrap(function* updateItem (ctx, next) {
-        ctx.body = yield myDb.updateId(ctx.params.id, ctx.request.body.name);
-        yield next();
-    }),
+async function removeItem (ctx, next) {
+    await myDb.removeId(ctx.params.id);
+    ctx.status = 204;
+    await next();
+}
 
-    removeItem: co.wrap(function* removeItem (ctx, next) {
-        yield myDb.removeId(ctx.params.id);
-        ctx.status = 204;
-        yield next();
-    })
-};
+export {getId, list, createItem, updateItem, removeItem};

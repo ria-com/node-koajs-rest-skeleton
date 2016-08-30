@@ -1,5 +1,3 @@
-"use strict";
-
 const amqp = require("amqplib"),
       config = require("config"),
       co = require("co"),
