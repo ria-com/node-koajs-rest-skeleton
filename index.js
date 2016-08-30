@@ -1,1 +1,2 @@
-require("./app/app.js");
+require('babel-core/register');
+const app = require('./app/app');

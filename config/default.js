@@ -1,7 +1,7 @@
 module.exports = {
     app: {
         name: 'myKoajsRestApp',
-        version: '0.2.0'
+        version: '2.1.0'
     },
     server: {
         port: 8081

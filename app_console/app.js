@@ -1,5 +1,3 @@
-"use strict";
-
 const argv = require('optimist')
         .usage('Usage: $0 --section [string] [--action [string]] [--opt [object]]')
         .demand(['section'])
@@ -14,9 +12,8 @@ const argv = require('optimist')
         .argv,
       co = require('co');
 
-const onerror = function onerror(err) { console.error(err.stack); };
+const controllers  = require(`./controllers/${argv.section}Controller`);
 
-co(function *(){
-    yield require('./controllers/'+argv.section+'Controller')[argv.action](argv.opt);
-    process.exit(0);
-}).catch(onerror);
+(async () => {
+    await controllers[argv.action](argv.opt);
+})();

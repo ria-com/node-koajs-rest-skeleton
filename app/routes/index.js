@@ -1,18 +1,17 @@
-module.exports = function routes(app) {
-    "use strict";
+import Router from 'koa-router';
+import convert from 'koa-convert';
+import KoaBody from 'koa-body';
+import {getId, list, createItem, updateItem, removeItem} from '../controllers/indexController';
 
-    const Router = require('koa-router'),
-        router = new Router(),
-        indexController = require('../controllers/indexController');
+const router = new Router(),
+    koaBody = convert(KoaBody());
 
     router
-        .get('/users',        indexController.list)
-        .get('/users/:id',    indexController.getId)
-        .post('/users/',      indexController.createItem)
-        .put('/users/:id',    indexController.updateItem)
-        .delete('/users/:id', indexController.removeItem);
+        .get('/users',        list)
+        .get('/users/:id',    getId)
+        .post('/users/',      koaBody, createItem)
+        .put('/users/:id',    koaBody, updateItem)
+        .delete('/users/:id', removeItem);
 
-    app.use(router.routes());
-    app.use(router.allowedMethods());
-
-};
+export function routes () { return router.routes() }
+export function allowedMethods () { return router.allowedMethods() }

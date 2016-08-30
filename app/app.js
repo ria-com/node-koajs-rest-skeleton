@@ -1,12 +1,13 @@
-const Koa = require('koa'),
-      config = require('config');
+import Koa from 'koa';
+import config from  'config';
+import err from './helpers/error';
+import {routes, allowedMethods} from './routes';
 
 const app = new Koa();
 
-//Comment this line to disable koa-body-parser
-require('./helpers/bodyparser')(app);
-
-require('./routes')(app);
+app.use(err);
+app.use(routes());
+app.use(allowedMethods());
 
 app.listen(config.server.port, function () {
     console.log('%s listening at port %d', config.app.name, config.server.port);
