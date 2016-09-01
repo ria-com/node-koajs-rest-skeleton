@@ -1,2 +1,2 @@
 require('babel-core/register');
-const app = require('./app/app');
+require('./app/app');
