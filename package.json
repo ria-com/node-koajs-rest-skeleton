@@ -1,6 +1,6 @@
 {
   "name": "myKoajsRestApp",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A simple Koajs 2.0 REST Application Skeleton in ES6 style",
   "author": {
     "name": "Oleg Cherniy",
@@ -18,7 +18,7 @@
     "co": "*",
     "config": "*",
     "koa": ">=2.x",
-    "koa-body": "*",
+    "koa-body": ">=2.0.0",
     "koa-bodyparser": "*",
     "koa-convert": "*",
     "koa-render": "*",
