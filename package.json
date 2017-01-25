@@ -15,6 +15,7 @@
     "babel-preset-es2015-node6": "^0.3.0",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.14.0",
+    "optimist": "*",
     "config": "*",
     "koa": ">=2.x",
     "koa-body": ">=2.0.0",
