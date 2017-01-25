@@ -1,6 +1,6 @@
 {
   "name": "myKoajsRestApp",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "A simple Koajs 2.0 REST Application Skeleton in ES6 style",
   "author": {
     "name": "Oleg Cherniy",
