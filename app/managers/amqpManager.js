@@ -1,9 +1,9 @@
 const amqp = require("amqplib"),
-      config = require("config"),
-      co = require("co"),
-      rabbitMqUrl = ["amqp://", config.rabbitMq.user, ":", config.rabbitMq.password, "@", config.rabbitMq.host, ":", config.rabbitMq.port].join("");
+      config = require("config");
 
-module.exports = function (handler) {
+module.exports = function (handler,rabbitMq = {}) {
+        rabbitMq = Object.assign(config.rabbitMq, rabbitMq);
+        let rabbitMqUrl = ["amqp://", rabbitMq.user, ":", rabbitMq.password, "@", rabbitMq.host, ":", config.rabbitMq.port].join("");
         amqp.connect(rabbitMqUrl)
             .then(function (connection) {
                 process.once('SIGINT', function () {
@@ -11,12 +11,12 @@ module.exports = function (handler) {
                 });
                 return connection.createChannel()
                     .then(function (channel) {
-                        var ok = channel.assertQueue(config.rabbitMq.queue,config.rabbitMq.options || {durable: true});
+                        var ok = channel.assertQueue(rabbitMq.queue,rabbitMq.options || {durable: true});
                         ok = ok.then(function () {
                             channel.prefetch(1);
                         });
                         ok = ok.then(function () {
-                            channel.consume(config.rabbitMq.queue, getQueueHandler(channel), {noAck: false});
+                            channel.consume(rabbitMq.queue, getQueueHandler(channel), {noAck: false});
                         });
                         return ok;
                     });
@@ -24,10 +24,10 @@ module.exports = function (handler) {
 
         function getQueueHandler(channel) {
             return function queueHandler(msg) {
-                co(function *() {
+                (async function () {
                     try {
                         var body = JSON.parse(msg.content.toString());
-                        if (yield handler(body)) {
+                        if (await handler(body)) {
                             channel.ack(msg);
                         } else {
                             channel.nack(msg, false, false);
@@ -36,10 +36,7 @@ module.exports = function (handler) {
                         channel.nack(msg, false, false);
                         console.error(e);
                     }
-                }).catch(function onerror(err) {
-                    channel.nack(msg, false, false);
-                    console.error(err.stack);
-                });
+                })();
             };
         }
 };

@@ -18,7 +18,7 @@
     "co": "*",
     "config": "*",
     "koa": ">=2.x",
-    "koa-body": "*",
+    "koa-body": ">=2.0.0",
     "koa-bodyparser": "*",
     "koa-convert": "*",
     "koa-render": "*",
