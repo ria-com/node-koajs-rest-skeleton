@@ -37,6 +37,33 @@ $ vi package.json
 $ vi config/default.js
 ```
 
+**Start app:**
+```sh
+$ node --harmony ./index.js
+```
+
+**Test you REST service:**
+```sh
+# get user id 1
+$ curl -XGET "http://localhost:8081/users/1
+
+# get all users
+$ curl -XGET "http://localhost:8081/users
+
+# get all users
+$ curl -XGET "http://localhost:8081/users
+
+# add new user
+$ curl -XPOST "http://localhost:8081/users" -d '{"name":"New record 1"}' -H 'Content-Type: application/json'
+
+# edit user id 3
+$ curl -XPUT "http://localhost:8081/users/3" -d '{"name":"New record 3"}' -H 'Content-Type: application/json'
+
+# delete user id 3
+$ curl -XDELETE "http://localhost:8081/users/3"
+```
+
+
 console api
 ===========
 
