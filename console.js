@@ -1,3 +1,2 @@
-#!/usr/bin/node --harmony
-require('babel-core/register');
+#!/usr/bin/node
 require("./app_console/app.js");

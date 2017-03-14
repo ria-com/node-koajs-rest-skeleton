@@ -1,6 +1,6 @@
-import Router from 'koa-router';
-import KoaBody from 'koa-body';
-import {getId, list, createItem, updateItem, removeItem} from '../controllers/indexController';
+const Router = require('koa-router'),
+      KoaBody = require('koa-body'),
+     {getId, list, createItem, updateItem, removeItem} = require('../controllers/indexController');
 
 const router = new Router();
 
@@ -11,5 +11,7 @@ const router = new Router();
         .put('/users/:id',    KoaBody(), updateItem)
         .delete('/users/:id', removeItem);
 
-export function routes () { return router.routes() }
-export function allowedMethods () { return router.allowedMethods() }
+module.exports = {
+    routes () { return router.routes() },
+    allowedMethods () { return router.allowedMethods() }
+};

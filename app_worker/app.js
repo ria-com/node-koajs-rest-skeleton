@@ -1,2 +1,2 @@
-var config = require("config");
+const config = require("config");
 require('./workers/' + config.worker);
