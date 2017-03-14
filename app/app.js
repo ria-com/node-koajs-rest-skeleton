@@ -1,9 +1,8 @@
-import Koa from 'koa';
-import config from  'config';
-import err from './helpers/error';
-import {routes, allowedMethods} from './routes';
-
-const app = new Koa();
+const Koa = require('koa'),
+      config = require('config'),
+      err = require('./helpers/error'),
+     {routes, allowedMethods}  = require('./routes'),
+      app = new Koa();
 
 app.use(err);
 app.use(routes());

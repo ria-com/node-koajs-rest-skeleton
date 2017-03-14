@@ -1,7 +1,7 @@
 {
   "name": "myKoajsRestApp",
-  "version": "2.1.1",
-  "description": "A simple Koajs 2.0 REST Application Skeleton in ES6 style",
+  "version": "3.0.0",
+  "description": "A simple Koajs 2 REST Application Skeleton in ES6 style",
   "author": {
     "name": "Oleg Cherniy",
     "email": "oleg.cherniy@gmail.com"
@@ -17,7 +17,7 @@
     "babel-register": "^6.14.0",
     "optimist": "*",
     "config": "*",
-    "koa": ">=2.x",
+    "koa": ">=2.2.x",
     "koa-body": ">=2.0.0",
     "koa-router": ">=7.x.x"
   },
@@ -30,6 +30,6 @@
     "test": "node --harmony ./node_modules/jasmine-node/lib/jasmine-node/cli.js spec"
   },
   "engines": {
-    "node": ">=6.0.x"
+    "node": ">=7.6.x"
   }
 }

@@ -1,4 +1,4 @@
-import myDb from '../managers/testDbManager';
+const myDb = require('../managers/testDbManager');
 
 /**
  * @example curl -XGET "http://localhost:8081/users/1"
@@ -42,4 +42,4 @@ async function removeItem (ctx, next) {
     await next();
 }
 
-export {getId, list, createItem, updateItem, removeItem};
+module.exports = {getId, list, createItem, updateItem, removeItem};

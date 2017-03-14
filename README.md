@@ -1,8 +1,8 @@
-node-koajs-rest-skeleton
-===================
+node-koajs-rest-skeleton v3.0
+=============================
 
-A simple [Koajs 2.0 Application REST Skeleton](https://github.com/ria-com/node-koajs-rest-skeleton)
-This version based on [koa 2.0](https://github.com/koajs/koa/tree/v2.x). 
+A simple [Koajs 2.2.0 Application REST Skeleton](https://github.com/ria-com/node-koajs-rest-skeleton)
+This version based on [koa 2.2.0](https://github.com/koajs/koa/tree/v2.x). 
 
   * You can also require assembly for [koa v2.x](https://github.com/ria-com/node-koajs-rest-skeleton/tree/v2.x) without [babel](https://babeljs.io)
   * You can also require assembly for [koa v1.x](https://github.com/ria-com/node-koajs-rest-skeleton/tree/v1.x)

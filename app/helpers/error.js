@@ -1,4 +1,4 @@
-export default async (ctx, next) => {
+module.exports = async (ctx, next) => {
     try {
         await next();
     } catch (err) {
@@ -8,4 +8,5 @@ export default async (ctx, next) => {
             message: err.message
         };
     }
-}
+};
+
