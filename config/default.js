@@ -1,10 +1,10 @@
 module.exports = {
     app: {
         name: 'myKoajsRestApp',
-        version: '2.1.0'
+        version: '3.1.0'
     },
     server: {
-        port: 8081
+        port: process.env.NODE_APP_INSTANCE || 8081
     },
     worker: process.env.NODE_WORKER_NAME,
     rabbitMq: {

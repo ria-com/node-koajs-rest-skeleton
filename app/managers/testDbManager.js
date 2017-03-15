@@ -1,10 +1,6 @@
 "use strict";
 
-const db = [
-      {id:0, name: "test0" },
-      {id:1, name: "test1" },
-      {id:2, name: "test2" }
-      ],
+const db = require('../../data/users.json'),
       fakeDelay=100;
 
 module.exports = {
@@ -40,7 +36,7 @@ module.exports = {
      * @return {Promise}
      */
     setNewId: function setNewIdToDb(name) {
-        var length = db.length;
+        let length = db.length;
         db.push({id: length, name: name});
         return module.exports.getById(length);
     },
