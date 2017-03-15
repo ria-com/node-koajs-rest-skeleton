@@ -34,19 +34,30 @@ $ vi package.json
 $ vi config/default.js
 ```
 
+**Install modules**
+```sh
+$ npm install
+```
+
 **Start app:**
 ```sh
 $ node ./index.js
 ```
 
+testing
+=======
 
-**Make your own automatic tests**
+
+**Make your own Spec-files for testing and start test**
 
 In this skeleton for automatic testing was used [jasmine-nodie](https://jasmine.github.io/2.1/node.html) & [Frisby (REST API testing framework)](http://frisbyjs.com).
-I wrote several tests that you can use as examples
+I wrote several tests that you can use as examples.
+
+All tests should be placed in the ./spec folder. The name of each test file must end with *Spec.js
 
 To run the tests, use 
 ```sh
+$ cd my_new_project
 $ npm test
 ```
 
@@ -110,14 +121,3 @@ For example
 $ NODE_WORKER_NAME=example NODE_QUEUE_NAME=example /usr/bin/node --harmony ./worker.js
 ```
 
-
-simple test
-===========
-
-**Make your own spec-file for testing and start test:**
-
-```sh
-$ cd my_new_project
-$ npm install
-$ npm test
-```
