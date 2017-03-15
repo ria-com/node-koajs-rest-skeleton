@@ -1,5 +1,3 @@
-"use strict";
-
 const myDb = require('../app/managers/testDbManager'),
       item = {id:2, name: "test2" };
 
@@ -7,7 +5,7 @@ describe('myDB Tests', function () {
 
     it("Get access to data from manager", function myDBTests(done) {
 
-        var failTest = function(err) {
+        let failTest = function(err) {
             expect(err).toBeUndefined();
             done();
         };

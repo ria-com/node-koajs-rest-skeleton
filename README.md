@@ -1,11 +1,8 @@
-node-koajs-rest-skeleton v3.0
+node-koajs-rest-skeleton v3.1
 =============================
 
 A simple [Koajs 2.2.0 Application REST Skeleton](https://github.com/ria-com/node-koajs-rest-skeleton)
 This version based on [koa 2.2.0](https://github.com/koajs/koa/tree/v2.x). 
-
-  * You can also require assembly for [koa v2.x](https://github.com/ria-com/node-koajs-rest-skeleton/tree/v2.x) without [babel](https://babeljs.io)
-  * You can also require assembly for [koa v1.x](https://github.com/ria-com/node-koajs-rest-skeleton/tree/v1.x)
     
 
 quick start
@@ -39,10 +36,23 @@ $ vi config/default.js
 
 **Start app:**
 ```sh
-$ node --harmony ./index.js
+$ node ./index.js
 ```
 
-**Test you REST service:**
+
+**Make your own automatic tests**
+
+In this skeleton for automatic testing was used [jasmine-nodie](https://jasmine.github.io/2.1/node.html) & [Frisby (REST API testing framework)](http://frisbyjs.com).
+I wrote several tests that you can use as examples
+
+To run the tests, use 
+```sh
+$ npm test
+```
+
+**Manual testing your REST service:**
+
+You can also manual check the serviceability of your service with bash and [curl](https://curl.haxx.se/)
 
 ###### get user id 1
 ```sh
@@ -67,6 +77,7 @@ $ curl -XPUT "http://localhost:8081/users/3" -d '{"name":"New record 3"}' -H 'Co
 ```sh
 $ curl -XDELETE "http://localhost:8081/users/3"
 ```
+
 
 
 console api
