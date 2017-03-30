@@ -2,7 +2,7 @@ node-koajs-rest-skeleton v3.1
 =============================
 
 A simple [Koajs 2.2.0 Application REST Skeleton](https://github.com/ria-com/node-koajs-rest-skeleton)
-This version based on [koa 2.2.0](https://github.com/koajs/koa/tree/v2.x). 
+This version based on [koa 2.2.0](https://github.com/koajs/koa). 
     
 
 quick start
