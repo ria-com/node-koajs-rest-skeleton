@@ -1,6 +1,6 @@
 {
   "name": "myKoajsRestApp",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "A simple Koajs 2 REST Application Skeleton in ES6 style",
   "author": {
     "name": "Oleg Cherniy",
@@ -13,9 +13,9 @@
   "dependencies": {
     "amqplib": "*",
     "config": "*",
-    "koa": ">=2.2.x",
-    "koa-body": ">=2.0.0",
-    "koa-router": ">=7.x.x",
+    "koa": ">=2.5.x",
+    "koa-body": ">=2.5.x",
+    "koa-router": ">=7.4.x",
     "optimist": "*"
   },
   "devDependencies": {

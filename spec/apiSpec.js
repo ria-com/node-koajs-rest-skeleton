@@ -1,17 +1,18 @@
-require('get-port')().then(port => {
-    process.env.NODE_APP_INSTANCE = port;
+const frisby = require('frisby'),
+    config = require('config'),
+    db = require('../data/users.json'),
+    newItem = {id:3, name:"А-ба-ба-га-ла-ма-га"},
+    updatedItem = {id:3, name:"A-ba-ba-ga-la-ma-ga"},
+    itemTypes = {
+        id: Number,
+        name: String
+    }
+;
 
-    const frisby = require('frisby');
-      config = require('config'),
-      api = require('../app/app.js'),
-      db = require('../data/users.json'),
-      newItem = {id:3, name:"А-ба-ба-га-ла-ма-га"},
-      updatedItem = {id:3, name:"A-ba-ba-ga-la-ma-ga"},
-      itemTypes = {
-          id: Number,
-          name: String
-      },
-      baseUrl = `http://localhost:${config.server.port}`;
+require('get-port')().then(port => {
+    config.server.port = port;
+    let api = require('../app/app.js'),
+        baseUrl = `http://localhost:${config.server.port}`;
 
     // Get all users request
     frisby.create('Get all users')
