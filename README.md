@@ -1,8 +1,8 @@
-node-koajs-rest-skeleton v3.2
+node-koajs-rest-skeleton v3.3
 =============================
 
-A simple [Koajs 2.5.0 Application REST Skeleton](https://github.com/ria-com/node-koajs-rest-skeleton)
-This version based on [koa 2.5.0](https://github.com/koajs/koa). 
+A simple [Koajs 2.5.1 Application REST Skeleton](https://github.com/ria-com/node-koajs-rest-skeleton)
+This version based on [koa 2.5.1](https://github.com/koajs/koa). 
     
 
 quick start
@@ -121,7 +121,51 @@ For example
 $ NODE_WORKER_NAME=example NODE_QUEUE_NAME=example /usr/bin/node --harmony ./worker.js
 ```
 
+kubernetes api
+==============
+
+Several new features have been added that can be used in conjunction with kubernetes
+  * **Auto shutdown**. Set the environment variable **NODE_LIFE_TIME** to specify 
+    the time at which the service will suspend its work, for exsmple:
+    NODE_LIFE_TIME=24h или NODE_LIFE_TIME=30m
+    
+    If the variable is not set, then "Auto shutdown" is disabled
+  * **Redy state**. Your app can tell the kubernetes system that it 
+    is temporarily not ready to accept new requests. How to do this is 
+    described in the example below
+    ```javascript
+       const {setReady} = require('../controllers/kubernetesController');
+       // ...
+       // setReady(false) // to temporary disable new requests
+       // ...
+       // setReady(true) // to restore accept new requests
+   
+    ```
+    This should be configured in the config of kubernetes pod, 
+    the address on which poll is created: **/redyz**
+  * **Health state**. Your app can tell the kubernetes system that it 
+    is temporarry broken. How to do this is described in the example below
+    ```javascript
+       const {setHealth} = require('../controllers/kubernetesController');
+       // ...
+       // setHealth(false) // to tell kubernetes: "app is broken" 
+       // ...
+       // setHealth(true) // to tell kubernetes: "app is live"
+   
+    ```
+    This should be configured in the config of kubernetes pod, 
+    the address on which poll is created: **/healthz**
+
+
+In order to avoid cluttering the minimal code of our REST-service, additional 
+functionality will be available when running the app via **index.kubernetes.js**: 
+```sh
+$ node ./index.kubernetes.js
+```
+
+
 history
 =======
 
+  * v3.3 - Some kubernetes features added
   * v3.2 - Updated dependencies for Koa 2.5, fix api tests, remove .babelrc
