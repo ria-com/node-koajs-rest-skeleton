@@ -67,11 +67,11 @@ You can also manual check the serviceability of your service with bash and [curl
 
 ###### get user id 1
 ```sh
-$ curl -XGET "http://localhost:8081/users/1
+$ curl -XGET "http://localhost:8081/users/1"
 ```
 ###### get all users
 ```sh
-$ curl -XGET "http://localhost:8081/users
+$ curl -XGET "http://localhost:8081/users"
 ```
 
 ###### add new user
