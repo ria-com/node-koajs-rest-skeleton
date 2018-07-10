@@ -1,7 +1,7 @@
 const Router = require('koa-router'),
       KoaBody = require('koa-body'),
      {getId, list, createItem, updateItem, removeItem} = require('../controllers/indexController'),
-     {readyz,healthz} = require('../controllers/kubernetesController');
+     {readyz,healthz, version} = require('../controllers/kubernetesController');
 
 const router = new Router();
 
@@ -15,6 +15,8 @@ const router = new Router();
         // Kubernetes features
         .get('/readyz',       readyz)
         .get('/healthz',      healthz)
+        .get('/version',      version)
+
     ;
 
 module.exports = {

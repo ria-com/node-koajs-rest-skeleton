@@ -70,5 +70,16 @@ module.exports = {
      */
     setReady(status = true) {
         readyStatus = status
+    },
+
+    /**
+     * Get version of app
+     */
+    async version(ctx, next) {
+        ctx.body = {
+            name: config.app.name,
+            version: config.app.version
+        };
+        await next();
     }
 };
