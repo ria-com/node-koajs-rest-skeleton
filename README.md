@@ -1,4 +1,4 @@
-node-koajs-rest-skeleton v3.3
+node-koajs-rest-skeleton v3.4
 =============================
 
 A simple [Koajs 2.5.1 Application REST Skeleton](https://github.com/ria-com/node-koajs-rest-skeleton)
@@ -167,5 +167,6 @@ $ node ./index.kubernetes.js
 history
 =======
 
+  * v3.4 - Fix Dockerfile add /version route to kubernetes version
   * v3.3 - Some kubernetes features added
   * v3.2 - Updated dependencies for Koa 2.5, fix api tests, remove .babelrc
