@@ -1,4 +1,9 @@
 const myDb = require('../managers/testDbManager');
+const Joi = require('joi');
+
+const userSchema = Joi.object().keys({
+    name: Joi.string().trim().required()
+});
 
 /**
  * @example curl -XGET "http://localhost:8081/users/1"
@@ -16,11 +21,23 @@ async function list (ctx, next) {
     await next();
 }
 
+async function handleValidationError(e, ctx, next) {
+    ctx.body = e.details;
+    ctx.status = 400;
+    return await next();
+}
+
 /**
  * @example curl -XPOST "http://localhost:8081/users" -d '{"name":"New record 1"}' -H 'Content-Type: application/json'
  */
 async function createItem (ctx, next) {
-    ctx.body = await myDb.setNewId(ctx.request.body.name);
+    let body;
+    try {
+        body = await Joi.validate(ctx.request.body, userSchema, {allowUnknown: true});
+    } catch (e) {
+        return await handleValidationError(e, ctx, next);
+    }
+    ctx.body = await myDb.setNewId(body.name);
     ctx.status = 201;
     await next();
 }
@@ -29,7 +46,13 @@ async function createItem (ctx, next) {
  * @example curl -XPUT "http://localhost:8081/users/3" -d '{"name":"New record 3"}' -H 'Content-Type: application/json'
  */
 async function updateItem (ctx, next) {
-    ctx.body = await myDb.updateId(ctx.params.id, ctx.request.body.name);
+    let body;
+    try {
+        body = await Joi.validate(ctx.request.body, userSchema, {allowUnknown: true});
+    } catch (e) {
+        return await handleValidationError(e, ctx, next);
+    }
+    ctx.body = await myDb.updateId(ctx.params.id, body.name);
     await next();
 }
 

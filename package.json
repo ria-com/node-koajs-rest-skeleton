@@ -14,6 +14,7 @@
     "@echo-health/koa-prometheus-exporter": "0.0.9",
     "amqplib": "*",
     "config": "*",
+    "joi": "^14.0.6",
     "koa": ">=2.5.1",
     "koa-body": ">=2.5.x",
     "koa-router": ">=7.4.x",
