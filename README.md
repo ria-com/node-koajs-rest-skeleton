@@ -1,8 +1,8 @@
-node-koajs-rest-skeleton v3.4
+node-koajs-rest-skeleton v3.5
 =============================
 
-A simple [Koajs 2.5.1 Application REST Skeleton](https://github.com/ria-com/node-koajs-rest-skeleton)
-This version based on [koa 2.5.1](https://github.com/koajs/koa). 
+A simple [Koajs 2.6.2 Application REST Skeleton](https://github.com/ria-com/node-koajs-rest-skeleton)
+This version based on [koa 2.6.2](https://github.com/koajs/koa). 
     
 
 quick start
@@ -167,6 +167,7 @@ $ node ./index.kubernetes.js
 history
 =======
 
+  * v3.5 - Joi validator was added to check PUT & POST input data (thanks to [Roman Yakovenko](https://github.com/b17))
   * v3.4 - Fix Dockerfile add /version route to kubernetes version
   * v3.3 - Some kubernetes features added
   * v3.2 - Updated dependencies for Koa 2.5, fix api tests, remove .babelrc
