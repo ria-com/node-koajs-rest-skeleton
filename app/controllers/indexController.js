@@ -1,4 +1,10 @@
-const myDb = require('../managers/testDbManager');
+const myDb = require('../managers/testDbManager'),
+      Joi = require('joi'),
+
+    // Simple user schema, more info: https://github.com/hapijs/joi
+      userSchema = Joi.object().keys({
+          name: Joi.string().trim().required()
+      });
 
 /**
  * @example curl -XGET "http://localhost:8081/users/1"
@@ -20,7 +26,14 @@ async function list (ctx, next) {
  * @example curl -XPOST "http://localhost:8081/users" -d '{"name":"New record 1"}' -H 'Content-Type: application/json'
  */
 async function createItem (ctx, next) {
-    ctx.body = await myDb.setNewId(ctx.request.body.name);
+    let body;
+    try {
+        // Joi validation, more info: https://github.com/hapijs/joi
+        body = await Joi.validate(ctx.request.body, userSchema, {allowUnknown: true});
+    } catch (err) {
+        throw new Error(err);
+    }
+    ctx.body = await myDb.setNewId(body.name);
     ctx.status = 201;
     await next();
 }
@@ -29,7 +42,14 @@ async function createItem (ctx, next) {
  * @example curl -XPUT "http://localhost:8081/users/3" -d '{"name":"New record 3"}' -H 'Content-Type: application/json'
  */
 async function updateItem (ctx, next) {
-    ctx.body = await myDb.updateId(ctx.params.id, ctx.request.body.name);
+    let body;
+    try {
+        // Joi validation, more info: https://github.com/hapijs/joi
+        body = await Joi.validate(ctx.request.body, userSchema, {allowUnknown: true});
+    } catch (err) {
+        throw new Error(err);
+    }
+    ctx.body = await myDb.updateId(ctx.params.id, body.name);
     await next();
 }
 
