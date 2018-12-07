@@ -27,12 +27,8 @@ async function list (ctx, next) {
  */
 async function createItem (ctx, next) {
     let body;
-    try {
-        // Joi validation, more info: https://github.com/hapijs/joi
-        body = await Joi.validate(ctx.request.body, userSchema, {allowUnknown: true});
-    } catch (err) {
-        throw new Error(err);
-    }
+    // Joi validation, more info: https://github.com/hapijs/joi
+    body = await Joi.validate(ctx.request.body, userSchema, {allowUnknown: true});
     ctx.body = await myDb.setNewId(body.name);
     ctx.status = 201;
     await next();
@@ -43,12 +39,8 @@ async function createItem (ctx, next) {
  */
 async function updateItem (ctx, next) {
     let body;
-    try {
-        // Joi validation, more info: https://github.com/hapijs/joi
-        body = await Joi.validate(ctx.request.body, userSchema, {allowUnknown: true});
-    } catch (err) {
-        throw new Error(err);
-    }
+    // Joi validation, more info: https://github.com/hapijs/joi
+    body = await Joi.validate(ctx.request.body, userSchema, {allowUnknown: true});
     ctx.body = await myDb.updateId(ctx.params.id, body.name);
     await next();
 }
