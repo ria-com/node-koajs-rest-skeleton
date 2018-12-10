@@ -2,21 +2,17 @@ module.exports = async (ctx, next) => {
     try {
         await next();
     } catch (err) {
-
-        if (err.isJoi) {
-            ctx.status = 400;
-            ctx.body = {
-                details: err.details,
-                message: err.message
-            };
-            return;
-        }
-
-        // will only respond with JSON
-        ctx.status = err.statusCode || err.status || 500;
-        ctx.body = {
+        let status = err.statusCode || err.status || 500;
+        let body = {
             message: err.message
         };
+        if (err.isJoi) {
+            status = 400;
+            body.details = err.details;
+        }
+        // will only respond with JSON
+        ctx.status = status;
+        ctx.body = body    
     }
 };
 
