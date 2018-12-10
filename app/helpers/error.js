@@ -12,7 +12,7 @@ module.exports = async (ctx, next) => {
         }
         // will only respond with JSON
         ctx.status = status;
-        ctx.body = body    
+        ctx.body = body
     }
 };
 
