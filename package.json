@@ -1,6 +1,6 @@
 {
   "name": "myKoajsRestApp",
-  "version": "3.5.0",
+  "version": "3.5.2",
   "description": "A simple Koajs 2 REST Application Skeleton in ES6 style",
   "author": {
     "name": "Oleg Cherniy",
@@ -14,10 +14,10 @@
     "@echo-health/koa-prometheus-exporter": "0.0.9",
     "amqplib": "*",
     "config": "*",
-    "joi": "^14.0.6",
-    "koa": "^>=2.6.2",
-    "koa-body": ">=2.5.x",
-    "koa-router": ">=7.4.x",
+    "joi": "^14.3.1",
+    "koa": ">=2.7.0",
+    "koa-body": ">=4.1.0",
+    "koa-router": ">=7.4.0",
     "optimist": "*",
     "to-time": "git://github.com/ApelSYN/to-time.git"
   },
