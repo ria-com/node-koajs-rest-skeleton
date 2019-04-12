@@ -1,4 +1,4 @@
-node-koajs-rest-skeleton v3.5.2
+node-koajs-rest-skeleton v3.5.3
 ===============================
 
 A simple [Koajs 2.7.0 Application REST Skeleton](https://github.com/ria-com/node-koajs-rest-skeleton)
