@@ -1,5 +1,5 @@
 const Router = require('koa-router'),
-      KoaBody = require('koa-body'),
+     { koaBody } = require('koa-body'),
      {getId, list, createItem, updateItem, removeItem} = require('../controllers/indexController');
 
 const router = new Router();
@@ -7,8 +7,8 @@ const router = new Router();
     router
         .get('/users',        list)
         .get('/users/:id',    getId)
-        .post('/users/',      KoaBody(), createItem)
-        .put('/users/:id',    KoaBody(), updateItem)
+        .post('/users/',      koaBody(), createItem)
+        .put('/users/:id',    koaBody(), updateItem)
         .delete('/users/:id', removeItem);
 
 module.exports = {
